@@ -2,6 +2,11 @@
 
 buildscript {
     ext.kotlin_version = '1.2.0'
+    ext.retrofit_version = '2.4.0'
+    ext.dagger_version = '2.15'
+    ext.greendao_version = '3.2.2'
+    ext.objectbox_version = '1.4.4'
+    ext.realm_version = '5.0.0'
     repositories {
         google()
         jcenter()
@@ -9,6 +14,9 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.greenrobot:greendao-gradle-plugin:$greendao_version"
+        classpath "io.objectbox:objectbox-gradle-plugin:$objectbox_version"
+        classpath "io.realm:realm-gradle-plugin:$realm_version"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
