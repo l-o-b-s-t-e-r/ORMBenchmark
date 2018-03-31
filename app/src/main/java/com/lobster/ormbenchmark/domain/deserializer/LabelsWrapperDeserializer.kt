@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.DeserializationContext
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer
 import com.lobster.ormbenchmark.domain.response.LabelResponse
-import com.lobster.ormbenchmark.domain.response.LabelsWrapper
+import com.lobster.ormbenchmark.domain.mapper.LabelsWrapper
 
 import java.io.IOException
 import java.util.ArrayList
@@ -44,6 +44,6 @@ class LabelsWrapperDeserializer : StdDeserializer<LabelsWrapper>(LabelsWrapper::
             }
         }
 
-        return  LabelsWrapper(labels)
+        return LabelsWrapper(labels)
     }
 }

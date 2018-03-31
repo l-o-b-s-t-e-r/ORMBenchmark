@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonParser
 import com.fasterxml.jackson.databind.DeserializationContext
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer
-import com.lobster.ormbenchmark.domain.response.CategoriesWrapper
+import com.lobster.ormbenchmark.domain.mapper.CategoriesWrapper
 import com.lobster.ormbenchmark.domain.response.CategoryResponse
 
 import java.io.IOException

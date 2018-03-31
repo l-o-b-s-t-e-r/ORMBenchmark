@@ -1,10 +1,9 @@
-package com.lobster.ormbenchmark.domain.response
+package com.lobster.ormbenchmark.domain.mapper
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize
 import com.lobster.ormbenchmark.domain.deserializer.CountriesWrapperDeserializer
 import com.lobster.ormbenchmark.domain.model.Country
-
-import java.util.ArrayList
+import com.lobster.ormbenchmark.domain.response.CountryResponse
 
 /**
  * Created by Lobster on 04.03.18.

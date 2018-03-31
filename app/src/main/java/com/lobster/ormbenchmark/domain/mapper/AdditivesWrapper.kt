@@ -1,10 +1,9 @@
-package com.lobster.ormbenchmark.domain.response
+package com.lobster.ormbenchmark.domain.mapper
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize
 import com.lobster.ormbenchmark.domain.deserializer.AdditivesWrapperDeserializer
 import com.lobster.ormbenchmark.domain.model.Additive
-
-import java.util.ArrayList
+import com.lobster.ormbenchmark.domain.response.AdditiveResponse
 
 
 /**
