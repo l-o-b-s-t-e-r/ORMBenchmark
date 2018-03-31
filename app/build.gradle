@@ -2,8 +2,6 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 
-apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'org.greenrobot.greendao'
 
 apply plugin: 'io.objectbox'
@@ -21,11 +19,33 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        def STRING = "String"
+
+        def HOST = "HOST"
+        def URL = "\"https://ssl-api.openfoodfacts.org\""
+
+        def DATABASE_NAME = "DATABASE_NAME"
+        def ORM_BENCHMARK_DB = "\"ORM_BENCHMARK_DB\""
+
+        debug {
+            debuggable = true
+            buildConfigField STRING, HOST, URL
+            buildConfigField STRING, DATABASE_NAME, ORM_BENCHMARK_DB
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    kapt {
+        generateStubs = true
+    }
+}
+
+greendao {
+    targetGenDir 'src/main/java'
 }
 
 dependencies {
@@ -49,7 +69,7 @@ dependencies {
 
     //Dagger
     implementation "com.google.dagger:dagger:$dagger_version"
-    annotationProcessor "com.google.dagger:dagger-compiler:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
 
     //GreenDao
     implementation "org.greenrobot:greendao:$greendao_version"
