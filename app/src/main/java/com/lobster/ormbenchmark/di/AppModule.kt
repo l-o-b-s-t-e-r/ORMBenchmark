@@ -1,8 +1,13 @@
 package com.lobster.ormbenchmark.di
 
 import android.app.Application
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.os.Build
+import android.support.annotation.RequiresApi
 import dagger.Module
 import dagger.Provides
+import org.jetbrains.anko.notificationManager
 import javax.inject.Singleton
 
 /**
@@ -20,4 +25,17 @@ class AppModule(private val application: Application) {
     @Provides
     @Singleton
     fun provideApplication() = application
+
+    @Provides
+    @Singleton
+    fun provideNotificationChannel(): String {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val notificationChannel = NotificationChannel("app_channel_1", "global_channel", NotificationManager.IMPORTANCE_MAX)
+            application.notificationManager.createNotificationChannel(notificationChannel)
+
+            return notificationChannel.id
+        } else {
+            return ""
+        }
+    }
 }

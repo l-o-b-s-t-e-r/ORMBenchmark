@@ -37,14 +37,14 @@ class NetworkModule {
                     .readTimeout(AppModule.READ_TIMEOUT, TimeUnit.MILLISECONDS)
                     .writeTimeout(AppModule.WRITE_TIMEOUT, TimeUnit.MILLISECONDS)
                     .connectionSpecs(listOf(spec))
-                    .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                    .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC))
                     .build()
         } else {
             httpClient = OkHttpClient.Builder()
                     .connectTimeout(AppModule.CONNECT_TIMEOUT, TimeUnit.MILLISECONDS)
                     .readTimeout(AppModule.READ_TIMEOUT, TimeUnit.MILLISECONDS)
                     .writeTimeout(AppModule.WRITE_TIMEOUT, TimeUnit.MILLISECONDS)
-                    .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                    .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC))
                     .build()
         }
 
