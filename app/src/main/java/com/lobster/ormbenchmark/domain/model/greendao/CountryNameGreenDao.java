@@ -1,4 +1,4 @@
-package com.lobster.ormbenchmark.domain.model;
+package com.lobster.ormbenchmark.domain.model.greendao;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
@@ -7,52 +7,63 @@ import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.Keep;
 
 /**
- * Created by Lobster on 03.03.18.
+ * Created by Lobster on 04.03.18.
  */
 
 @Entity(indexes = {
-        @Index(value = "languageCode, labelTag", unique = true)
+        @Index(value = "languageCode, countyTag", unique = true)
 })
-public class LabelName {
+public class CountryNameGreenDao {
 
     @Id(autoincrement = true)
     Long id;
 
-    private String labelTag;
+    private String countyTag;
 
     private String languageCode;
 
     private String name;
 
-    public LabelName() {
-    }
-    
     @Keep
-    public LabelName(String labelTag, String languageCode, String name) {
-        this.labelTag = labelTag;
+    public CountryNameGreenDao(String countyTag, String languageCode,
+                               String name) {
+        this.countyTag = countyTag;
         this.languageCode = languageCode;
         this.name = name;
     }
 
     @Keep
-    public LabelName(String name) {
+    public CountryNameGreenDao(String name) {
         this.name = name;
     }
 
-    @Generated(hash = 274274142)
-    public LabelName(Long id, String labelTag, String languageCode, String name) {
+    @Generated(hash = 1398880579)
+    public CountryNameGreenDao(Long id, String countyTag, String languageCode,
+            String name) {
         this.id = id;
-        this.labelTag = labelTag;
+        this.countyTag = countyTag;
         this.languageCode = languageCode;
         this.name = name;
     }
 
-    public String getLabelTag() {
-        return this.labelTag;
+    @Generated(hash = 58550706)
+    public CountryNameGreenDao() {
     }
 
-    public void setLabelTag(String labelTag) {
-        this.labelTag = labelTag;
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCountyTag() {
+        return this.countyTag;
+    }
+
+    public void setCountyTag(String countyTag) {
+        this.countyTag = countyTag;
     }
 
     public String getLanguageCode() {
@@ -71,11 +82,4 @@ public class LabelName {
         this.name = name;
     }
 
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 }

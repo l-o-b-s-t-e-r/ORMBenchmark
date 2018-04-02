@@ -1,4 +1,4 @@
-package com.lobster.ormbenchmark.domain.model;
+package com.lobster.ormbenchmark.domain.model.greendao;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
@@ -6,43 +6,39 @@ import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.Keep;
 
-/**
- * Created by Lobster on 04.03.18.
- */
-
 @Entity(indexes = {
-        @Index(value = "languageCode, categoryTag", unique = true)
+        @Index(value = "languageCode, allergenTag", unique = true)
 })
-public class CategoryName {
+public class AllergenNameGreenDao {
 
     @Id(autoincrement = true)
     Long id;
 
-    private String categoryTag;
+    private String allergenTag;
 
     private String languageCode;
 
     private String name;
 
     @Keep
-    public CategoryName(String categoryTag, String languageCode,
-                        String name) {
-        this.categoryTag = categoryTag;
+    public AllergenNameGreenDao(String allergenTag, String languageCode,
+                                String name) {
+        this.allergenTag = allergenTag;
         this.languageCode = languageCode;
         this.name = name;
     }
 
-    @Generated(hash = 607384862)
-    public CategoryName(Long id, String categoryTag, String languageCode,
+    @Generated(hash = 2024723149)
+    public AllergenNameGreenDao(Long id, String allergenTag, String languageCode,
             String name) {
         this.id = id;
-        this.categoryTag = categoryTag;
+        this.allergenTag = allergenTag;
         this.languageCode = languageCode;
         this.name = name;
     }
 
-    @Generated(hash = 2002473108)
-    public CategoryName() {
+    @Generated(hash = 1442646670)
+    public AllergenNameGreenDao() {
     }
 
     public Long getId() {
@@ -53,12 +49,12 @@ public class CategoryName {
         this.id = id;
     }
 
-    public String getCategoryTag() {
-        return this.categoryTag;
+    public String getAllergenTag() {
+        return this.allergenTag;
     }
 
-    public void setCategoryTag(String categoryTag) {
-        this.categoryTag = categoryTag;
+    public void setAllergenTag(String allergenTag) {
+        this.allergenTag = allergenTag;
     }
 
     public String getLanguageCode() {

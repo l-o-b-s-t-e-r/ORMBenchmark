@@ -1,4 +1,4 @@
-package com.lobster.ormbenchmark.domain.model;
+package com.lobster.ormbenchmark.domain.model.greendao;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
@@ -6,39 +6,48 @@ import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.Keep;
 
+/**
+ * Created by Lobster on 04.03.18.
+ */
+
 @Entity(indexes = {
-        @Index(value = "languageCode, allergenTag", unique = true)
+        @Index(value = "languageCode, additiveTag", unique = true)
 })
-public class AllergenName {
+public class AdditiveNameGreenDao {
 
     @Id(autoincrement = true)
     Long id;
 
-    private String allergenTag;
+    private String additiveTag;
 
     private String languageCode;
 
     private String name;
 
     @Keep
-    public AllergenName(String allergenTag, String languageCode,
-                        String name) {
-        this.allergenTag = allergenTag;
+    public AdditiveNameGreenDao(String additiveTag, String languageCode,
+                                String name) {
+        this.additiveTag = additiveTag;
         this.languageCode = languageCode;
         this.name = name;
     }
 
-    @Generated(hash = 1400007293)
-    public AllergenName(Long id, String allergenTag, String languageCode,
+    @Keep
+    public AdditiveNameGreenDao(String name) {
+        this.name = name;
+    }
+
+    @Generated(hash = 391609571)
+    public AdditiveNameGreenDao(Long id, String additiveTag, String languageCode,
             String name) {
         this.id = id;
-        this.allergenTag = allergenTag;
+        this.additiveTag = additiveTag;
         this.languageCode = languageCode;
         this.name = name;
     }
 
-    @Generated(hash = 287009235)
-    public AllergenName() {
+    @Generated(hash = 1676962984)
+    public AdditiveNameGreenDao() {
     }
 
     public Long getId() {
@@ -49,12 +58,12 @@ public class AllergenName {
         this.id = id;
     }
 
-    public String getAllergenTag() {
-        return this.allergenTag;
+    public String getAdditiveTag() {
+        return this.additiveTag;
     }
 
-    public void setAllergenTag(String allergenTag) {
-        this.allergenTag = allergenTag;
+    public void setAdditiveTag(String additiveTag) {
+        this.additiveTag = additiveTag;
     }
 
     public String getLanguageCode() {

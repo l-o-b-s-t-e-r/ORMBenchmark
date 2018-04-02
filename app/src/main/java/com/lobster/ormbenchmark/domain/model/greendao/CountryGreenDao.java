@@ -1,4 +1,4 @@
-package com.lobster.ormbenchmark.domain.model;
+package com.lobster.ormbenchmark.domain.model.greendao;
 
 import org.greenrobot.greendao.DaoException;
 import org.greenrobot.greendao.annotation.Entity;
@@ -12,10 +12,14 @@ import org.greenrobot.greendao.annotation.Unique;
 
 import java.util.List;
 
+/**
+ * Created by Lobster on 04.03.18.
+ */
+
 @Entity(indexes = {
         @Index(value = "tag", unique = true)
 })
-public class Additive {
+public class CountryGreenDao {
 
     @Id(autoincrement = true)
     private Long id;
@@ -24,32 +28,32 @@ public class Additive {
     private String tag;
 
     @ToMany(joinProperties = {
-            @JoinProperty(name = "tag", referencedName = "additiveTag")
+            @JoinProperty(name = "tag", referencedName = "countyTag")
     })
-    private List<AdditiveName> names;
+    private List<CountryNameGreenDao> names;
 
     /** Used to resolve relations */
     @Generated(hash = 2040040024)
     private transient DaoSession daoSession;
 
     /** Used for active entity operations. */
-    @Generated(hash = 1566396314)
-    private transient AdditiveDao myDao;
+    @Generated(hash = 371662747)
+    private transient CountryGreenDaoDao myDao;
 
     @Keep
-    public Additive(String tag, List<AdditiveName> names) {
+    public CountryGreenDao(Long id, String name) {
+        this.id = id;
+        this.tag = name;
+    }
+
+    @Keep
+    public CountryGreenDao(String tag, List<CountryNameGreenDao> names) {
         this.tag = tag;
         this.names = names;
     }
 
-    @Generated(hash = 605457668)
-    public Additive(Long id, String tag) {
-        this.id = id;
-        this.tag = tag;
-    }
-
-    @Generated(hash = 55580656)
-    public Additive() {
+    @Generated(hash = 1354711647)
+    public CountryGreenDao() {
     }
 
     public Long getId() {
@@ -72,15 +76,15 @@ public class Additive {
      * To-many relationship, resolved on first access (and after reset).
      * Changes to to-many relations are not persisted, make changes to the target entity.
      */
-    @Generated(hash = 2093045715)
-    public List<AdditiveName> getNames() {
+    @Generated(hash = 1307901024)
+    public List<CountryNameGreenDao> getNames() {
         if (names == null) {
             final DaoSession daoSession = this.daoSession;
             if (daoSession == null) {
                 throw new DaoException("Entity is detached from DAO context");
             }
-            AdditiveNameDao targetDao = daoSession.getAdditiveNameDao();
-            List<AdditiveName> namesNew = targetDao._queryAdditive_Names(tag);
+            CountryNameGreenDaoDao targetDao = daoSession.getCountryNameGreenDaoDao();
+            List<CountryNameGreenDao> namesNew = targetDao._queryCountryGreenDao_Names(tag);
             synchronized (this) {
                 if (names == null) {
                     names = namesNew;
@@ -133,9 +137,9 @@ public class Additive {
     }
 
     /** called by internal mechanisms, do not call yourself. */
-    @Generated(hash = 1169248577)
+    @Generated(hash = 1385388658)
     public void __setDaoSession(DaoSession daoSession) {
         this.daoSession = daoSession;
-        myDao = daoSession != null ? daoSession.getAdditiveDao() : null;
+        myDao = daoSession != null ? daoSession.getCountryGreenDaoDao() : null;
     }
 }

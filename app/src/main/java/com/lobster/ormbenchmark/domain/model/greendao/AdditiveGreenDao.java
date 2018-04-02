@@ -1,4 +1,4 @@
-package com.lobster.ormbenchmark.domain.model;
+package com.lobster.ormbenchmark.domain.model.greendao;
 
 import org.greenrobot.greendao.DaoException;
 import org.greenrobot.greendao.annotation.Entity;
@@ -12,14 +12,10 @@ import org.greenrobot.greendao.annotation.Unique;
 
 import java.util.List;
 
-/**
- * Created by Lobster on 04.03.18.
- */
-
 @Entity(indexes = {
         @Index(value = "tag", unique = true)
 })
-public class Category {
+public class AdditiveGreenDao {
 
     @Id(autoincrement = true)
     private Long id;
@@ -28,32 +24,32 @@ public class Category {
     private String tag;
 
     @ToMany(joinProperties = {
-            @JoinProperty(name = "tag", referencedName = "categoryTag")
+            @JoinProperty(name = "tag", referencedName = "additiveTag")
     })
-    private List<CategoryName> names;
+    private List<AdditiveNameGreenDao> names;
 
     /** Used to resolve relations */
     @Generated(hash = 2040040024)
     private transient DaoSession daoSession;
 
     /** Used for active entity operations. */
-    @Generated(hash = 40161530)
-    private transient CategoryDao myDao;
+    @Generated(hash = 1936583361)
+    private transient AdditiveGreenDaoDao myDao;
 
     @Keep
-    public Category(String tag, List<CategoryName> names) {
+    public AdditiveGreenDao(String tag, List<AdditiveNameGreenDao> names) {
         this.tag = tag;
         this.names = names;
     }
 
-    @Generated(hash = 1914604067)
-    public Category(Long id, String tag) {
+    @Generated(hash = 863977557)
+    public AdditiveGreenDao(Long id, String tag) {
         this.id = id;
         this.tag = tag;
     }
 
-    @Generated(hash = 1150634039)
-    public Category() {
+    @Generated(hash = 121074640)
+    public AdditiveGreenDao() {
     }
 
     public Long getId() {
@@ -76,15 +72,15 @@ public class Category {
      * To-many relationship, resolved on first access (and after reset).
      * Changes to to-many relations are not persisted, make changes to the target entity.
      */
-    @Generated(hash = 1993038757)
-    public List<CategoryName> getNames() {
+    @Generated(hash = 669441276)
+    public List<AdditiveNameGreenDao> getNames() {
         if (names == null) {
             final DaoSession daoSession = this.daoSession;
             if (daoSession == null) {
                 throw new DaoException("Entity is detached from DAO context");
             }
-            CategoryNameDao targetDao = daoSession.getCategoryNameDao();
-            List<CategoryName> namesNew = targetDao._queryCategory_Names(tag);
+            AdditiveNameGreenDaoDao targetDao = daoSession.getAdditiveNameGreenDaoDao();
+            List<AdditiveNameGreenDao> namesNew = targetDao._queryAdditiveGreenDao_Names(tag);
             synchronized (this) {
                 if (names == null) {
                     names = namesNew;
@@ -137,9 +133,9 @@ public class Category {
     }
 
     /** called by internal mechanisms, do not call yourself. */
-    @Generated(hash = 503476761)
+    @Generated(hash = 964868649)
     public void __setDaoSession(DaoSession daoSession) {
         this.daoSession = daoSession;
-        myDao = daoSession != null ? daoSession.getCategoryDao() : null;
+        myDao = daoSession != null ? daoSession.getAdditiveGreenDaoDao() : null;
     }
 }

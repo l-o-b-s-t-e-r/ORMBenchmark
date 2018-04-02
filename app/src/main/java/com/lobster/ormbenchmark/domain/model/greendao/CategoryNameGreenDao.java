@@ -1,4 +1,4 @@
-package com.lobster.ormbenchmark.domain.model;
+package com.lobster.ormbenchmark.domain.model.greendao;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
@@ -11,43 +11,38 @@ import org.greenrobot.greendao.annotation.Keep;
  */
 
 @Entity(indexes = {
-        @Index(value = "languageCode, countyTag", unique = true)
+        @Index(value = "languageCode, categoryTag", unique = true)
 })
-public class CountryName {
+public class CategoryNameGreenDao {
 
     @Id(autoincrement = true)
     Long id;
 
-    private String countyTag;
+    private String categoryTag;
 
     private String languageCode;
 
     private String name;
 
     @Keep
-    public CountryName(String countyTag, String languageCode,
-                       String name) {
-        this.countyTag = countyTag;
+    public CategoryNameGreenDao(String categoryTag, String languageCode,
+                                String name) {
+        this.categoryTag = categoryTag;
         this.languageCode = languageCode;
         this.name = name;
     }
 
-    @Keep
-    public CountryName(String name) {
-        this.name = name;
-    }
-
-    @Generated(hash = 1215321834)
-    public CountryName(Long id, String countyTag, String languageCode,
+    @Generated(hash = 1732831604)
+    public CategoryNameGreenDao(Long id, String categoryTag, String languageCode,
             String name) {
         this.id = id;
-        this.countyTag = countyTag;
+        this.categoryTag = categoryTag;
         this.languageCode = languageCode;
         this.name = name;
     }
 
-    @Generated(hash = 1153545899)
-    public CountryName() {
+    @Generated(hash = 1003949058)
+    public CategoryNameGreenDao() {
     }
 
     public Long getId() {
@@ -58,12 +53,12 @@ public class CountryName {
         this.id = id;
     }
 
-    public String getCountyTag() {
-        return this.countyTag;
+    public String getCategoryTag() {
+        return this.categoryTag;
     }
 
-    public void setCountyTag(String countyTag) {
-        this.countyTag = countyTag;
+    public void setCategoryTag(String categoryTag) {
+        this.categoryTag = categoryTag;
     }
 
     public String getLanguageCode() {

@@ -1,4 +1,4 @@
-package com.lobster.ormbenchmark.domain.model;
+package com.lobster.ormbenchmark.domain.model.greendao;
 
 import org.greenrobot.greendao.DaoException;
 import org.greenrobot.greendao.annotation.Entity;
@@ -12,14 +12,10 @@ import org.greenrobot.greendao.annotation.Unique;
 
 import java.util.List;
 
-/**
- * Created by Lobster on 03.03.18.
- */
-
 @Entity(indexes = {
         @Index(value = "tag", unique = true)
 })
-public class Label {
+public class AllergenGreenDao {
 
     @Id(autoincrement = true)
     private Long id;
@@ -27,32 +23,37 @@ public class Label {
     @Unique
     private String tag;
 
+    private Boolean enabled;
+
     @ToMany(joinProperties = {
-            @JoinProperty(name = "tag", referencedName = "labelTag")
+            @JoinProperty(name = "tag", referencedName = "allergenTag")
     })
-    private List<LabelName> names;
+    private List<AllergenNameGreenDao> names;
 
     /** Used to resolve relations */
     @Generated(hash = 2040040024)
     private transient DaoSession daoSession;
 
     /** Used for active entity operations. */
-    @Generated(hash = 40777009)
-    private transient LabelDao myDao;
-
-    public Label() {
-    }
+    @Generated(hash = 321044680)
+    private transient AllergenGreenDaoDao myDao;
 
     @Keep
-    public Label(String tag, List<LabelName> names) {
+    public AllergenGreenDao(String tag, List<AllergenNameGreenDao> names) {
+        this.enabled = false;
         this.tag = tag;
         this.names = names;
     }
 
-    @Generated(hash = 1601313181)
-    public Label(Long id, String tag) {
+    @Generated(hash = 1449125912)
+    public AllergenGreenDao(Long id, String tag, Boolean enabled) {
         this.id = id;
         this.tag = tag;
+        this.enabled = enabled;
+    }
+
+    @Generated(hash = 199891018)
+    public AllergenGreenDao() {
     }
 
     public Long getId() {
@@ -71,19 +72,27 @@ public class Label {
         this.tag = tag;
     }
 
+    public Boolean getEnabled() {
+        return this.enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
     /**
      * To-many relationship, resolved on first access (and after reset).
      * Changes to to-many relations are not persisted, make changes to the target entity.
      */
-    @Generated(hash = 1212652385)
-    public List<LabelName> getNames() {
+    @Generated(hash = 781007643)
+    public List<AllergenNameGreenDao> getNames() {
         if (names == null) {
             final DaoSession daoSession = this.daoSession;
             if (daoSession == null) {
                 throw new DaoException("Entity is detached from DAO context");
             }
-            LabelNameDao targetDao = daoSession.getLabelNameDao();
-            List<LabelName> namesNew = targetDao._queryLabel_Names(tag);
+            AllergenNameGreenDaoDao targetDao = daoSession.getAllergenNameGreenDaoDao();
+            List<AllergenNameGreenDao> namesNew = targetDao._queryAllergenGreenDao_Names(tag);
             synchronized (this) {
                 if (names == null) {
                     names = namesNew;
@@ -136,9 +145,9 @@ public class Label {
     }
 
     /** called by internal mechanisms, do not call yourself. */
-    @Generated(hash = 692607636)
+    @Generated(hash = 1266091737)
     public void __setDaoSession(DaoSession daoSession) {
         this.daoSession = daoSession;
-        myDao = daoSession != null ? daoSession.getLabelDao() : null;
+        myDao = daoSession != null ? daoSession.getAllergenGreenDaoDao() : null;
     }
 }

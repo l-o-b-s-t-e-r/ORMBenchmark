@@ -1,4 +1,4 @@
-package com.lobster.ormbenchmark.domain.model;
+package com.lobster.ormbenchmark.domain.model.greendao;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
@@ -7,63 +7,52 @@ import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.Keep;
 
 /**
- * Created by Lobster on 04.03.18.
+ * Created by Lobster on 03.03.18.
  */
 
 @Entity(indexes = {
-        @Index(value = "languageCode, additiveTag", unique = true)
+        @Index(value = "languageCode, labelTag", unique = true)
 })
-public class AdditiveName {
+public class LabelNameGreenDao {
 
     @Id(autoincrement = true)
     Long id;
 
-    private String additiveTag;
+    private String labelTag;
 
     private String languageCode;
 
     private String name;
 
+    public LabelNameGreenDao() {
+    }
+    
     @Keep
-    public AdditiveName(String additiveTag, String languageCode,
-                        String name) {
-        this.additiveTag = additiveTag;
+    public LabelNameGreenDao(String labelTag, String languageCode, String name) {
+        this.labelTag = labelTag;
         this.languageCode = languageCode;
         this.name = name;
     }
 
     @Keep
-    public AdditiveName(String name) {
+    public LabelNameGreenDao(String name) {
         this.name = name;
     }
 
-    @Generated(hash = 1645648251)
-    public AdditiveName(Long id, String additiveTag, String languageCode,
-            String name) {
+    @Generated(hash = 330497141)
+    public LabelNameGreenDao(Long id, String labelTag, String languageCode, String name) {
         this.id = id;
-        this.additiveTag = additiveTag;
+        this.labelTag = labelTag;
         this.languageCode = languageCode;
         this.name = name;
     }
 
-    @Generated(hash = 1697057291)
-    public AdditiveName() {
+    public String getLabelTag() {
+        return this.labelTag;
     }
 
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getAdditiveTag() {
-        return this.additiveTag;
-    }
-
-    public void setAdditiveTag(String additiveTag) {
-        this.additiveTag = additiveTag;
+    public void setLabelTag(String labelTag) {
+        this.labelTag = labelTag;
     }
 
     public String getLanguageCode() {
@@ -82,4 +71,11 @@ public class AdditiveName {
         this.name = name;
     }
 
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
