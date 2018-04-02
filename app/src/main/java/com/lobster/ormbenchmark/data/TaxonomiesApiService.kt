@@ -1,6 +1,6 @@
 package com.lobster.ormbenchmark.data
 
-import com.lobster.ormbenchmark.domain.response.*
+import com.lobster.ormbenchmark.domain.mapper.*
 import io.reactivex.Single
 import retrofit2.http.GET
 

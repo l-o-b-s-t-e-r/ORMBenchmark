@@ -1,89 +1,77 @@
 package com.lobster.ormbenchmark.data
 
-import com.lobster.ormbenchmark.core.TaxonomiesApiService
-import com.lobster.ormbenchmark.domain.model.*
+import com.lobster.ormbenchmark.domain.mapper.*
 import io.reactivex.Single
+
 
 /**
  * Created by Lobster on 30.03.18.
  */
-class TaxonomiesRepository(
-        private val api: TaxonomiesApiService,
-        private val dao: DaoSession) : ITaxonomiesRepository {
+class TaxonomiesRepository(private val api: TaxonomiesApiService) : ITaxonomiesRepository {
 
-    override fun getLabels(): Single<List<Label>> {
-        return api.getLabels()
-                .map { it.map() }
-    }
+    private var labels: LabelsWrapper? = null
+    private var allergens: AllergensWrapper? = null
+    private var additives: AdditivesWrapper? = null
+    private var categories: CategoriesWrapper? = null
+    private var countries: CountriesWrapper? = null
 
-    override fun getAllergens(): Single<List<Allergen>> {
-        return api.getAllergens()
-                .map { it.map() }
-    }
-
-    override fun getCountries(): Single<List<Country>> {
-        return api.getCountries()
-                .map { it.map() }
-    }
-
-    override fun getCategories(): Single<List<Category>> {
-        return api.getCategories()
-                .map { it.map() }
-    }
-
-    override fun getAdditives(): Single<List<Additive>> {
-        return api.getAdditives()
-                .map { it.map() }
-    }
-
-    @Synchronized
-    override fun saveLabels(labels: List<Label>) {
-        for (label in labels) {
-            dao.labelDao.insertOrReplaceInTx(label)
-            for (labelName in label.getNames()) {
-                dao.labelNameDao.insertOrReplace(labelName)
-            }
+    override fun getLabels(): Single<LabelsWrapper> {
+        return if (labels == null) {
+            api.getLabels()
+                    .map {
+                        labels = it
+                        labels
+                    }
+        } else {
+            Single.just(labels)
         }
     }
 
-    @Synchronized
-    override fun saveAllergens(allergens: List<Allergen>) {
-        for (allergen in allergens) {
-            dao.allergenDao.insertOrReplaceInTx(allergen)
-            for (allergenName in allergen.getNames()) {
-                dao.allergenNameDao.insertOrReplace(allergenName)
-            }
+    override fun getAllergens(): Single<AllergensWrapper> {
+        return if (allergens == null) {
+            api.getAllergens()
+                    .map {
+                        allergens = it
+                        allergens
+                    }
+        } else {
+            Single.just(allergens)
         }
     }
 
-    @Synchronized
-    override fun saveAdditives(additives: List<Additive>) {
-        for (additive in additives) {
-            dao.additiveDao.insertOrReplaceInTx(additive)
-            for (additiveName in additive.getNames()) {
-                dao.additiveNameDao.insertOrReplace(additiveName)
-            }
+    override fun getCountries(): Single<CountriesWrapper> {
+        return if (countries == null) {
+            api.getCountries()
+                    .map {
+                        countries = it
+                        countries
+                    }
+        } else {
+            Single.just(countries)
         }
     }
 
-    @Synchronized
-    override fun saveCountries(countries: List<Country>) {
-        for (country in countries) {
-            dao.countryDao.insertOrReplaceInTx(country)
-            for (countryName in country.getNames()) {
-                dao.countryNameDao.insertOrReplace(countryName)
-            }
+    override fun getCategories(): Single<CategoriesWrapper> {
+        return if (categories == null) {
+            api.getCategories()
+                    .map {
+                        categories = it
+                        categories
+                    }
+        } else {
+            Single.just(categories)
         }
     }
 
-    @Synchronized
-    override fun saveCategories(categories: List<Category>) {
-        for (category in categories) {
-            dao.categoryDao.insertOrReplaceInTx(category)
-            for (categoryName in category.getNames()) {
-                dao.categoryNameDao.insertOrReplace(categoryName)
-            }
+    override fun getAdditives(): Single<AdditivesWrapper> {
+        return if (additives == null) {
+            api.getAdditives()
+                    .map {
+                        additives = it
+                        additives
+                    }
+        } else {
+            Single.just(additives)
         }
     }
-
 }

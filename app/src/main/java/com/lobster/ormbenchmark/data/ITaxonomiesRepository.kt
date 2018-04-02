@@ -1,6 +1,8 @@
 package com.lobster.ormbenchmark.data
 
-import com.lobster.ormbenchmark.domain.model.*
+import com.lobster.ormbenchmark.domain.mapper.*
+import com.lobster.ormbenchmark.domain.model.greendao.*
+import io.reactivex.Completable
 import io.reactivex.Single
 
 /**
@@ -8,24 +10,14 @@ import io.reactivex.Single
  */
 interface ITaxonomiesRepository {
 
-    fun getLabels(): Single<List<Label>>
+    fun getLabels(): Single<LabelsWrapper>
 
-    fun getAllergens(): Single<List<Allergen>>
+    fun getAllergens(): Single<AllergensWrapper>
 
-    fun getAdditives(): Single<List<Additive>>
+    fun getAdditives(): Single<AdditivesWrapper>
 
-    fun getCountries(): Single<List<Country>>
+    fun getCountries(): Single<CountriesWrapper>
 
-    fun getCategories(): Single<List<Category>>
-
-    fun saveLabels(labels: List<Label>)
-
-    fun saveAdditives(additives: List<Additive>)
-
-    fun saveCountries(countries: List<Country>)
-
-    fun saveAllergens(allergens: List<Allergen>)
-
-    fun saveCategories(categories: List<Category>)
+    fun getCategories(): Single<CategoriesWrapper>
 
 }
