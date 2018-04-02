@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">ORMBenchmark</string>
+
+    <string name="orm_realm">Realm</string>
+    <string name="orm_green_dao">GreenDao</string>
+    <string name="orm_object_box">ObjectBox</string>
+
+    <string name="toast_operation_running">Please wait until the end of the operation</string>
+    <string name="toast_tap_on_orm">Tap on the ORM!</string>
+    <string name="toast_common_error">Oops! Something went wrong.</string>
+    <string name="toast_network_error">Please check your internet connection and try again.</string>
+
+    <string name="notification_orm_finished_title">Check the result!</string>
+    <string name="notification_orm_finished_description">Data was saved successfully.</string>
 </resources>

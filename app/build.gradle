@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 
+apply plugin: 'kotlin-android-extensions'
+
 apply plugin: 'org.greenrobot.greendao'
 
 apply plugin: 'io.objectbox'
@@ -17,6 +19,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         def STRING = "String"
@@ -25,7 +28,7 @@ android {
         def URL = "\"https://ssl-api.openfoodfacts.org\""
 
         def DATABASE_NAME = "DATABASE_NAME"
-        def ORM_BENCHMARK_DB = "\"ORM_BENCHMARK_DB\""
+        def ORM_BENCHMARK_DB = "\"ORM_BENCHMARK_DATABASE\""
 
         debug {
             debuggable = true
@@ -51,6 +54,7 @@ greendao {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "org.jetbrains.anko:anko:0.10.4"
     implementation "com.android.support:appcompat-v7:26.1.0"
     implementation "com.android.support.constraint:constraint-layout:1.0.2"
 
@@ -74,7 +78,17 @@ dependencies {
     //GreenDao
     implementation "org.greenrobot:greendao:$greendao_version"
 
+    //Views
+    implementation "com.github.bmarrdev:android-DecoView-charting:v1.2"
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
+
     testImplementation "junit:junit:4.12"
     androidTestImplementation "com.android.support.test:runner:1.0.1"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:3.0.1"
+}
+
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
 }
