@@ -1,7 +1,11 @@
 package com.lobster.ormbenchmark.domain.response
 
-import com.lobster.ormbenchmark.domain.model.Category
-import com.lobster.ormbenchmark.domain.model.CategoryName
+import com.lobster.ormbenchmark.domain.model.greendao.CategoryGreenDao
+import com.lobster.ormbenchmark.domain.model.greendao.CategoryNameGreenDao
+import com.lobster.ormbenchmark.domain.model.objectbox.CategoryNameObjectBox
+import com.lobster.ormbenchmark.domain.model.objectbox.CategoryObjectBox
+import com.lobster.ormbenchmark.domain.model.realm.CategoryNameRealm
+import com.lobster.ormbenchmark.domain.model.realm.CategoryRealm
 
 import java.util.ArrayList
 
@@ -9,15 +13,23 @@ import java.util.ArrayList
  * Created by Lobster on 04.03.18.
  */
 
-class CategoryResponse(private val code: String, private val names: Map<String, String>) {
+class CategoryResponse(val code: String, val names: Map<String, String>) {
 
-    fun map(): Category {
-        val category = Category(code, ArrayList())
+    fun mapGreenDao(): CategoryGreenDao {
+        val category = CategoryGreenDao(code, ArrayList())
         for ((key, value) in names) {
-            category.names.add(CategoryName(category.tag, key, value))
+            category.names.add(CategoryNameGreenDao(category.tag, key, value))
         }
 
         return category
     }
 
+    fun mapObjectBox(): CategoryObjectBox {
+        val category = CategoryObjectBox(code)
+        for ((key, value) in names) {
+            category.names.add(CategoryNameObjectBox(key, value))
+        }
+
+        return category
+    }
 }
