@@ -20,6 +20,14 @@ class SaveTaxonomiesUseCase @Inject constructor(
 
     override fun createObservable(params: Parameters): Completable {
         return when (params.type) {
+            Orm.GREEN_DAO_OLD -> Completable.merge(
+                    params.taxonomiesWrapper.let {
+                        listOf(Completable.fromAction { greenDaoRepository.saveLabelsOld(it.labels.mapGreenDao()) },
+                                Completable.fromAction { greenDaoRepository.saveAllergensOld(it.allergens.mapGreenDao()) },
+                                Completable.fromAction { greenDaoRepository.saveCountriesOld(it.countries.mapGreenDao()) },
+                                Completable.fromAction { greenDaoRepository.saveAdditivesOld(it.additives.mapGreenDao()) },
+                                Completable.fromAction { greenDaoRepository.saveCategoriesOld(it.categories.mapGreenDao()) })
+                    })
             Orm.GREEN_DAO -> Completable.merge(
                     params.taxonomiesWrapper.let {
                         listOf(Completable.fromAction { greenDaoRepository.saveLabels(it.labels.mapGreenDao()) },

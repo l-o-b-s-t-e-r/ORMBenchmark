@@ -19,6 +19,16 @@ interface IGreenDaoRepository {
 
     fun saveCategories(categories: List<CategoryGreenDao>)
 
+    fun saveLabelsOld(labels: List<LabelGreenDao>)
+
+    fun saveAdditivesOld(additives: List<AdditiveGreenDao>)
+
+    fun saveCountriesOld(countries: List<CountryGreenDao>)
+
+    fun saveAllergensOld(allergens: List<AllergenGreenDao>)
+
+    fun saveCategoriesOld(categories: List<CategoryGreenDao>)
+
     fun getSavedTaxonomiesCount(): Single<Int>
 
     fun clear(): Completable

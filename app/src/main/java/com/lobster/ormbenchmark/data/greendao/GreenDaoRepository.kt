@@ -141,6 +141,62 @@ class GreenDaoRepository(private val dao: DaoSession): IGreenDaoRepository {
         }
     }
 
+    override fun saveLabelsOld(labels: List<LabelGreenDao>) {
+        for (label in labels) {
+            labelDao.insertOrReplaceInTx(label)
+            savedTaxonomiesCount++
+            for (labelName in label.names) {
+                labelNameDao.insertOrReplace(labelName)
+                savedTaxonomiesCount++
+            }
+        }
+    }
+
+    override fun saveAllergensOld(allergens: List<AllergenGreenDao>) {
+        for (allergen in allergens) {
+            allergenDao.insertOrReplaceInTx(allergen)
+            savedTaxonomiesCount++
+            for (allergenName in allergen.names) {
+                allergenNameDao.insertOrReplace(allergenName)
+                savedTaxonomiesCount++
+            }
+        }
+    }
+
+    override fun saveAdditivesOld(additives: List<AdditiveGreenDao>) {
+        for (additive in additives) {
+            additiveDao.insertOrReplaceInTx(additive)
+            savedTaxonomiesCount++
+            for (additiveName in additive.names) {
+                additiveNameDao.insertOrReplace(additiveName)
+                savedTaxonomiesCount++
+            }
+        }
+    }
+
+
+    override fun saveCountriesOld(countries: List<CountryGreenDao>) {
+        for (country in countries) {
+            countryDao.insertOrReplaceInTx(country)
+            savedTaxonomiesCount++
+            for (countryName in country.names) {
+                countryNameDao.insertOrReplace(countryName)
+                savedTaxonomiesCount++
+            }
+        }
+    }
+
+    override fun saveCategoriesOld(categories: List<CategoryGreenDao>) {
+        for (category in categories) {
+            categoryDao.insertOrReplaceInTx(category)
+            savedTaxonomiesCount++
+            for (categoryName in category.names) {
+                categoryNameDao.insertOrReplace(categoryName)
+                savedTaxonomiesCount++
+            }
+        }
+    }
+
     override fun getSavedTaxonomiesCount(): Single<Int> {
         return Single.just(savedTaxonomiesCount)
     }

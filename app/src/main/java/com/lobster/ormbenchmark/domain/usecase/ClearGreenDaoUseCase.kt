@@ -20,6 +20,7 @@ class ClearGreenDaoUseCase @Inject constructor(
 
     override fun createObservable(params: Parameters): Completable {
         return when (params.type) {
+            Orm.GREEN_DAO_OLD,
             Orm.GREEN_DAO -> greenDaoRepository.clear()
             Orm.OBJECT_BOX -> objectBoxRepository.clear()
             else -> realmRepository.clear()

@@ -2,6 +2,7 @@
     <string name="app_name">ORMBenchmark</string>
 
     <string name="orm_realm">Realm</string>
+    <string name="orm_green_dao_old">Not optimized GreenDao</string>
     <string name="orm_green_dao">GreenDao</string>
     <string name="orm_object_box">ObjectBox</string>
 

@@ -19,6 +19,7 @@ class GetSavedTaxonomiesCountUseCase @Inject constructor(
 
     override fun createObservable(params: Parameters): Single<Int> {
         return when (params.type) {
+            Orm.GREEN_DAO_OLD,
             Orm.GREEN_DAO -> greenDaoRepository.getSavedTaxonomiesCount()
             Orm.OBJECT_BOX -> objectBoxRepository.getSavedTaxonomiesCount()
             else -> realmRepository.getSavedTaxonomiesCount()

@@ -13,13 +13,8 @@ object Orm {
     @StringDef(GREEN_DAO, OBJECT_BOX, REALM)
     annotation class Type
 
+    const val GREEN_DAO_OLD = "green_dao_old"
     const val GREEN_DAO = "green_dao"
     const val OBJECT_BOX = "object_box"
     const val REALM = "realm"
-
-    fun list() = listOf(
-            OrmInfo(GREEN_DAO, R.string.orm_green_dao),
-            OrmInfo(OBJECT_BOX, R.string.orm_object_box),
-            OrmInfo(REALM, R.string.orm_realm)
-    )
 }

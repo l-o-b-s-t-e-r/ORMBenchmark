@@ -10,6 +10,7 @@ import javax.inject.Inject
 class MockData @Inject constructor() {
 
     val ormMap = mapOf(
+            Pair(Orm.GREEN_DAO_OLD, OrmInfo(Orm.GREEN_DAO_OLD, R.string.orm_green_dao_old)),
             Pair(Orm.GREEN_DAO, OrmInfo(Orm.GREEN_DAO, R.string.orm_green_dao)),
             Pair(Orm.OBJECT_BOX, OrmInfo(Orm.OBJECT_BOX, R.string.orm_object_box)),
             Pair(Orm.REALM, OrmInfo(Orm.REALM, R.string.orm_realm))
